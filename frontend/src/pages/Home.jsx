@@ -130,7 +130,7 @@ const Home = () => {
             <Jobs result={result} />
           ) : (
             <>
-              <h3>{result.length} Jobs Found</h3>
+              <h3 className="ml-2">{result.length} Jobs Found</h3>
               <p>Try changing your search criteria</p>
             </>
           )}
