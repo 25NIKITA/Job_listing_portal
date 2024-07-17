@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { GoogleAuthProvider, signInWithPopup } from "firebase/auth";
-import "./Login.css";
+import "./Signup.css";
 import { getAuth } from "firebase/auth";
 import app from "../firebase/firebase.config";
 import user_email from "../assets/email.png";

@@ -7,8 +7,9 @@ import MyJobs from "../pages/MyJobs";
 import SalaryPage from "../pages/SalaryPage";
 import UpdateJob from "../pages/UpdateJob";
 import Login from "../components/Login";
-import Signup from "../components/Signup";
 import JobDetails from "../pages/JobDetails";
+import Signup from "../components/Signup";
+import UploadResume from "../components/Uploadresume";
 const router = createBrowserRouter([
   {
     path: "/",
@@ -44,6 +45,10 @@ const router = createBrowserRouter([
       {
         path: "/job/:id",
         element: <JobDetails />,
+      },
+      {
+        path: "/upload-resume",
+        element: <UploadResume />,
       },
     ],
   },
