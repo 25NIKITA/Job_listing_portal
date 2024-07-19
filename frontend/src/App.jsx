@@ -1,20 +1,20 @@
 import React from "react";
-import Navbar from "./components/Navbar";
+/*import Navbar from "./components/Navbar";
 import Home from "./pages/Home";
 import { Route, Routes } from "react-router-dom";
-import Footer from "./components/Footer";
+import Footer from "./components/Footer"; */
 import "./index.css";
+import "./App.css";
+import { Outlet } from "react-router-dom";
+import Navbar from "./components/Navbar";
 
-const App = () => {
+function App() {
   return (
-    <div>
+    <>
       <Navbar />
-      <Routes>
-        <Route path="/" element={<Home />} />
-      </Routes>
-      <Footer />
-    </div>
+      <Outlet></Outlet>
+    </>
   );
-};
+}
 
 export default App;
