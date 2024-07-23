@@ -20,8 +20,7 @@ By the end of this project, we successfully built a functional job listing porta
 - **Frontend**: React.js
 - **Backend**: Node.js, Express.js
 - **Database**: MongoDB
-- **Authentication**: JWT (JSON Web Tokens)
-- **File Uploads**: Multer
+- **Authentication**: Firebase
 - **Styling**: CSS, Bootstrap
 
 ## Prerequisites
