@@ -4,8 +4,8 @@ import InputField from "../components/InputField";
 const EmploymentType = ({ handleCategoryChange }) => {
   return (
     <div>
-      <h4 className="text-lg font-medium mb-2">Type of Employment</h4>
-      <div>
+      <h4 className="text-lg font-medium mb-2 pl-4">Type of Employment</h4>
+      <div className=" pl-4">
         <label className="sidebar-label-container">
           <input
             type="radio"

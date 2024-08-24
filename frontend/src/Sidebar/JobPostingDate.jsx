@@ -15,8 +15,8 @@ const JobPostingDate = ({ handleCategoryChange }) => {
 
   return (
     <div>
-      <h4 className="text-lg font-medium mb-2">Date of Posting</h4>
-      <div>
+      <h4 className="text-lg font-medium mb-2 pl-4">Date of Posting</h4>
+      <div className="pl-4">
         <label className="sidebar-label-container">
           <input
             type="radio"

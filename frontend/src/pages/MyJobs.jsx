@@ -84,7 +84,7 @@ const MyJobs = () => {
   return (
     <div className="max-w-screen-2xl container mx-auto xl:px-24 px-4">
       <div className="my-jobs-container">
-        <h1 className="text-center">ALL My Jobs</h1>
+        <h1 className="text-center font-bold text-xl">All My Jobs</h1>
         <div className="search-box p-2 text-center mb-2">
           <input
             onChange={(e) => setSearchText(e.target.value)}

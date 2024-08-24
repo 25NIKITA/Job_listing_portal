@@ -328,7 +328,7 @@ const Home = () => {
         handleSearch={handleSearch}
       />
       <div className="bg-[#FAFAFA] md:grid grid-cols-4 gap-8 lg:px-4 py-12">
-        <div className="bg-white p-4 rounded">
+        <div className="bg-white py-4 rounded">
           <Sidebar
             handleCategoryChange={handleCategoryChange}
             handleButtonClick={handleButtonClick}

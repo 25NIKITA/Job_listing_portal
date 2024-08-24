@@ -1,11 +1,13 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { Link, NavLink } from "react-router-dom";
 import { FaBars, FaXmark } from "react-icons/fa6";
+import { auth, db } from "../components/firebase";
+import { doc, getDoc } from "firebase/firestore";
 // import { Button } from "../components/ui/button";
-import { UserButton, useUser } from "@clerk/clerk-react";
+// import { UserButton, useUser } from "@clerk/clerk-react";
 
 const Navbar = () => {
-  const { user, isSignedIn } = useUser();
+  // const { user, isSignedIn } = useUser();
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const handleMenuToggler = () => {
     setIsMenuOpen(!isMenuOpen);
@@ -13,9 +15,37 @@ const Navbar = () => {
   const navItems = [
     { path: "/", title: "Start a Search" },
     { path: "/my-job", title: "My Jobs" },
-    { path: "salary", title: "Salary Estimate" },
+    { path: "/salary", title: "Salary Estimate" },
     { path: "/post-job", title: "Post a Job" },
   ];
+  const [userDetails, setUserDetails] = useState(null);
+  const fetchUserData = async () => {
+    auth.onAuthStateChanged(async (user) => {
+      console.log(user);
+
+      const docRef = doc(db, "Users", user.uid);
+      const docSnap = await getDoc(docRef);
+      if (docSnap.exists()) {
+        setUserDetails(docSnap.data());
+        console.log(docSnap.data());
+      } else {
+        console.log("User is not logged in");
+      }
+    });
+  };
+  useEffect(() => {
+    fetchUserData();
+  }, []);
+
+  async function handleLogout() {
+    try {
+      await auth.signOut();
+      window.location.href = "/login";
+      console.log("User logged out successfully!");
+    } catch (error) {
+      console.error("Error logging out:", error.message);
+    }
+  }
   return (
     <header className="max-w-screen-2xl container mx-auto xl:px-24 px-4">
       <nav className="flex justify-between items-center py-6">
@@ -48,13 +78,13 @@ const Navbar = () => {
           >
             Sign In
           </Link> */}
-          {isSignedIn ? (
+          {/* {isSignedIn ? (
             <div className="flex gap-2 items-center">
-              {/* <Link to={"/auth/sign-in"}>
+              <Link to={"/auth/sign-in"}>
                 <button className="py-2 px-5 border rounded bg-blue-500-500 text-white">
                   Logout
                 </button>
-              </Link> */}
+              </Link>
               <UserButton />
             </div>
           ) : (
@@ -63,6 +93,32 @@ const Navbar = () => {
                 Get Started
               </button>
             </Link>
+          )} */}
+          {userDetails ? (
+            <>
+              <div style={{ display: "flex", justifyContent: "center" }}>
+                {/* <img
+                  src={userDetails.photo}
+                  width={"40%"}
+                  style={{ borderRadius: "50%" }}
+                /> */}
+              </div>
+              <div className="flex gap-2 items-center">
+                <p className="text-black font-bold text-[17px] border p-[7px] bg-gray-200 rounded">
+                  Welcome {userDetails.firstName}
+                </p>
+                {/* <div>
+                <p>Email: {userDetails.email}</p>
+                <p>First Name: {userDetails.firstName}</p>
+              </div> */}
+                <button className="btn btn-primary" onClick={handleLogout}>
+                  Logout
+                </button>
+              </div>
+            </>
+          ) : (
+            // <p>Loading...</p>
+            <></>
           )}
         </div>
 
@@ -79,11 +135,7 @@ const Navbar = () => {
       </nav>
 
       {/*navitems for mobile*/}
-      <div
-        className={`px-4 bg-black py-5 rounded-sm ${
-          isMenuOpen ? "" : "hidden"
-        }`}
-      >
+      <div className={`px-4 py-5 rounded-sm ${isMenuOpen ? "" : "hidden"}`}>
         <ul>
           {navItems.map(({ path, title }) => (
             <li
@@ -100,8 +152,8 @@ const Navbar = () => {
           ))}
 
           <li className="text-white py-1">
-            <Link to="/login" className="py-2 px-1 rounded">
-              Login
+            <Link to="/login" className="py-2 rounded">
+              Log Out
             </Link>
           </li>
         </ul>

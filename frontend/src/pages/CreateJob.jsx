@@ -63,7 +63,7 @@ const CreateJob = () => {
                 />
               </div>
               <div className="lg:w-1/2 w-full">
-                <label className="block mb-2 text-lg ">company Name</label>
+                <label className="block mb-2 text-lg ">Company Name</label>
                 <input
                   type="text"
                   placeholder="Ex:Microsoft"
@@ -183,7 +183,7 @@ const CreateJob = () => {
                 className="w-full pl-3 py-1.5 focus:outline-none placeholder:text-gray-600"
                 rows={6}
                 defaultValue={
-                  "MERN Stack Job Portal using React, MongoDB, Node, Express.js & Tailwind CSS | Part 2"
+                  "MERN Stack Job Portal using React, MongoDB, Node, Express.js & Tailwind CSS"
                 }
                 placeholder="Job Description"
                 {...register("description")}

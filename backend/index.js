@@ -352,6 +352,7 @@ async function run() {
           ...jobData,
         },
       };
+      delete updateDoc.$set._id;
       const result = await jobsCollections.updateOne(
         filter,
         updateDoc,

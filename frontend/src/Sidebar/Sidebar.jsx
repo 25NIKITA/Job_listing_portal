@@ -8,7 +8,7 @@ import EmploymentType from "./EmploymentType";
 const Sidebar = ({ handleCategoryChange, handleButtonClick }) => {
   return (
     <div className="space-y-5">
-      <h3 className="text-lg font-bold mb-2">Filters</h3>
+      <h3 className="text-lg font-bold mb-2 pl-4">Filters</h3>
       <Location handleCategoryChange={handleCategoryChange} />
       <Salary
         handleCategoryChange={handleCategoryChange}
